@@ -1,0 +1,6 @@
+framework module Pods_TestingMova {
+  umbrella header "Pods-TestingMova-umbrella.h"
+
+  export *
+  module * { export * }
+}
