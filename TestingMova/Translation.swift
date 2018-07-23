@@ -8,6 +8,26 @@
 
 import Foundation
 import Result
+import Moya
+
+
+extension Result where T: Moya.Response {
+   
+   func results<U: Decodable>() -> [U] {
+      
+      switch self {
+         
+      case let .success(moyaResponse):
+         let objects: [U] = TranslationLayer.decodes(data: moyaResponse.data)
+         return objects
+         
+      case .failure(let error):
+         debugPrint("Response Errro: ========> ", error.localizedDescription)
+         return []
+      }
+   }
+}
+
 
 enum APIClientError: Error {
    case CouldNotDecodeJSON

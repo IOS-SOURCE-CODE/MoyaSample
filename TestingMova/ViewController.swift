@@ -8,7 +8,7 @@
 
 import UIKit
 import Moya
-import Result
+
 
 
 class ViewController: UIViewController {
@@ -23,7 +23,6 @@ class ViewController: UIViewController {
          let users : [ResponseUser] = response.results()
          _ = users.map { debugPrint($0.user.subscriptionsURL) }
          
-         
       }
       
    }
@@ -32,22 +31,5 @@ class ViewController: UIViewController {
 }
 
 
-extension Result where T: Moya.Response {
-   
-   
-   func results<U: Decodable>() -> [U] {
-      
-      switch self {
-         
-      case let .success(moyaResponse):
-         let objects: [U] = TranslationLayer.decodes(data: moyaResponse.data)
-         return objects
-         
-      case .failure(let error):
-         debugPrint("Response Errro: ========> ", error.localizedDescription)
-         return []
-      }
-   }
-}
 
 

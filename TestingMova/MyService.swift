@@ -13,11 +13,6 @@ enum MyService {
    case commit
 }
 
-
-
-
-
-
 extension MyService: TargetType {
    
    var method: Moya.Method {
@@ -52,9 +47,6 @@ extension MyService: TargetType {
          return ""
       }
    }
-   
-  
-   
    
    
 }
